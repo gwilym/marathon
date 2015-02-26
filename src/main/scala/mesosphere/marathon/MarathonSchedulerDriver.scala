@@ -70,13 +70,7 @@ object MarathonSchedulerDriver {
 
     val frameworkInfo = frameworkInfoBuilder.build()
 
-    val newDriver: ECSSchedulerDriver = credential match {
-      case Some(cred) =>
-        new ECSSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster(), cred)
-
-      case None =>
-        new ECSSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster())
-    }
+    val newDriver = new ECSSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster())
 
     driver = Some(newDriver)
     scheduler = Some(newScheduler)
