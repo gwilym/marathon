@@ -148,6 +148,7 @@ object Dependencies {
     beanUtils % "compile",
     scallop % "compile",
     playJson % "compile",
+    amazonEcsSchedulerDriver % "compile",
 
     // test
     Test.scalatest % "test",
@@ -203,6 +204,7 @@ object Dependency {
   val hadoopCommon = "org.apache.hadoop" % "hadoop-common" % V.Hadoop excludeAll(excludeMortbayJetty, excludeJavaxServlet)
   val beanUtils = "commons-beanutils" % "commons-beanutils" % "1.9.2"
   val scallop = "org.rogach" %% "scallop" % V.Scallop
+  val amazonEcsSchedulerDriver = "com.amazonaws" %% "amazon-ecs-scheduler-driver" % "0.1"
 
   object Test {
     val scalatest = "org.scalatest" %% "scalatest" % V.ScalaTest
