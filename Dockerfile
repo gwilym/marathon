@@ -10,11 +10,19 @@ RUN apt-get install -y \
     scala \
     curl
 
+RUN apt-get install -y \
+    maven
+
 RUN curl -SsL -O http://dl.bintray.com/sbt/debian/sbt-0.13.5.deb && \
     dpkg -i sbt-0.13.5.deb
 
 COPY . /marathon
 WORKDIR /marathon
+
+RUN cd ecs-mesos-scheduler-driver && \
+    mvn package && \
+    mvn install && \
+    cd ..
 
 RUN sbt assembly
 

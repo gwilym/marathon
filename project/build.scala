@@ -57,6 +57,7 @@ object MarathonBuild extends Build {
     ),
     javacOptions in Compile ++= Seq("-encoding", "UTF-8", "-source", "1.6", "-target", "1.6", "-Xlint:unchecked", "-Xlint:deprecation"),
     resolvers ++= Seq(
+      "Local Maven"               at Path.userHome.asFile.toURI.toURL + ".m2/repository",
       "Mesosphere Public Repo"    at "http://downloads.mesosphere.io/maven",
       "Twitter Maven2 Repository" at "http://maven.twttr.com/",
       "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
@@ -204,7 +205,7 @@ object Dependency {
   val hadoopCommon = "org.apache.hadoop" % "hadoop-common" % V.Hadoop excludeAll(excludeMortbayJetty, excludeJavaxServlet)
   val beanUtils = "commons-beanutils" % "commons-beanutils" % "1.9.2"
   val scallop = "org.rogach" %% "scallop" % V.Scallop
-  val amazonEcsSchedulerDriver = "com.amazonaws" %% "amazon-ecs-scheduler-driver" % "0.1"
+  val amazonEcsSchedulerDriver = "com.amazonaws" % "amazon-ecs-scheduler-driver" % "0.1"
 
   object Test {
     val scalatest = "org.scalatest" %% "scalatest" % V.ScalaTest
