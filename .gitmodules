@@ -1,0 +1,3 @@
+[submodule "ecs-mesos-scheduler-driver"]
+	path = ecs-mesos-scheduler-driver
+	url = git@github.com:awslabs/ecs-mesos-scheduler-driver.git
