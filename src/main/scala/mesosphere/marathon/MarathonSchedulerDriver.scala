@@ -7,6 +7,8 @@ import org.apache.mesos.{ SchedulerDriver, MesosSchedulerDriver }
 import com.google.protobuf.ByteString
 import java.io.{ FileInputStream, IOException }
 
+import com.amazonaws.ecs.sample.ECSSchedulerDriver
+
 /**
   * Wrapper class for the scheduler
   */
@@ -68,12 +70,12 @@ object MarathonSchedulerDriver {
 
     val frameworkInfo = frameworkInfoBuilder.build()
 
-    val newDriver: MesosSchedulerDriver = credential match {
+    val newDriver: ECSSchedulerDriver = credential match {
       case Some(cred) =>
-        new MesosSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster(), cred)
+        new ECSSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster(), cred)
 
       case None =>
-        new MesosSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster())
+        new ECSSchedulerDriver(newScheduler, frameworkInfo, config.mesosMaster())
     }
 
     driver = Some(newDriver)
